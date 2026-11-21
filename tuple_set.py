@@ -3,16 +3,16 @@ import psutil
 import time
 from time import sleep
 curtemp = None
-limits = (78, 80)
+limits = (78, 85)
 while True:
     temps = psutil.sensors_temperatures()
     print(f"current temperature: {temps['nvme'][0].current}º")
     high_temp = limits[0]
     critical_temp = limits[1]
-    if temps['nvme'][0].current > high_temp:
-        print("the temperature have gotten dangerous, please take a break")
-    elif temps['nvme'][0].current > critical_temp:
+    if temps['nvme'][0].current > critical_temp:
         print("the temperature is extremely dangerous, please take a break imediatly")
+    elif temps['nvme'][0].current > high_temp:
+        print("the temperature have gotten dangerous, please take a break")
     else:
         print("the temp is okay")
     sleep(1)
