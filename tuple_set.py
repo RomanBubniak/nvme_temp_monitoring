@@ -49,10 +49,12 @@ while True:
                         "NVMe controller": temp_check2, 
                         "CPU": temp_check3,
                         "GPU": temp_check4 }
+    all_ok = True
     for name, status in temp_check_set.items():
         if status != "✅":
             print(f"there's a problem in {name}, {status}")
-        else:
-            print("✅")
+            all_ok = False
+    if all_ok:
+        print("✅")
     sleep(1)
     os.system("clear")
