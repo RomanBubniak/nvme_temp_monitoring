@@ -52,5 +52,7 @@ while True:
     for name, status in temp_check_set.items():
         if status != "✅":
             print(f"there's a problem in {name}, {status}")
+        else:
+            print("✅")
     sleep(1)
     os.system("clear")
